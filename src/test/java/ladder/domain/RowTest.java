@@ -3,8 +3,42 @@ package ladder.domain;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RowTest {
+
+    @Test
+    void noOfPersons() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Row(0);
+        });
+    }
+
+    @Test
+    void startPositionWhenMinus() {
+        assertThrows(IllegalArgumentException.class, () -> {
+           Row row = new Row(3);
+           row.drawLine(-1);
+        });
+    }
+
+    @Test
+    void startPositionWhenOverNoOfPersons() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Row row = new Row(3);
+            row.drawLine(2);
+        });
+    }
+
+    @Test
+    void drawLineWhenAlreadyDrawingPoint() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Row row = new Row(3);
+            row.drawLine(0);
+            row.drawLine(1);
+        });
+    }
+
     @Test
     void moveWhenNoLine() {
         Row row = new Row(3);

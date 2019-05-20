@@ -20,10 +20,24 @@ class Row {
     private int[] persons;
 
     Row(int noOfPersons) {
+        if (noOfPersons < 1) {
+            throw new IllegalArgumentException(String.format("사람 수는 한 명 이상이어야 합니다. 현재 값 : %d", noOfPersons));
+        }
         this.persons = new int[noOfPersons];
     }
 
     void drawLine(int startPosition) {
+        if (startPosition < 0) {
+            throw new IllegalArgumentException(String.format("시작점은 0 이상이어야 합니다. 현재 값 : %d", startPosition));
+        }
+        if (startPosition >= persons.length - 1) {
+            throw new IllegalArgumentException(String.format("시작점은 &d 미만이어야 합니다. 현재 값 : %d", persons.length - 1, startPosition));
+        }
+
+        int currentValue = persons[startPosition];
+        if(currentValue == -1) {
+            throw new IllegalArgumentException("선을 그을 수 없는 위치입니다.");
+        }
         persons[startPosition] = Direction.RIGHT.getNumber();
         persons[startPosition + 1] = Direction.LEFT.getNumber();
     }
