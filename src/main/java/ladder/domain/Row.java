@@ -1,6 +1,22 @@
 package ladder.domain;
 
 public class Row {
+    enum Direction {
+        LEFT(-1),
+        CENTER(0),
+        RIGHT(1);
+
+        private int number;
+
+        Direction(int number) {
+            this.number = number;
+        }
+
+        public int getNumber() {
+            return number;
+        }
+    }
+
     int[] persons;
 
     Row(int noOfPersons) {
@@ -8,21 +24,25 @@ public class Row {
     }
 
     public void drawLine(int startPosition) {
-        persons[startPosition] = 1;
-        persons[startPosition + 1] = -1;
+        persons[startPosition] = Direction.RIGHT.getNumber();
+        persons[startPosition + 1] = Direction.LEFT.getNumber();
     }
 
     public int move(int nthOfPerson) {
         if (isNoLine(nthOfPerson)) {
             return nthOfPerson;
         }
-        if (persons[nthOfPerson] == 1) {
+        if (isRightDirection(nthOfPerson)) {
             return nthOfPerson + 1;
         }
         return nthOfPerson - 1;
     }
 
+    private boolean isRightDirection(int nthOfPerson) {
+        return persons[nthOfPerson] == Direction.RIGHT.getNumber();
+    }
+
     private boolean isNoLine(int nthOfPerson) {
-        return persons[nthOfPerson] == 0;
+        return persons[nthOfPerson] == Direction.CENTER.getNumber();
     }
 }
