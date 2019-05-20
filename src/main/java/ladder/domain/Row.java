@@ -1,7 +1,7 @@
 package ladder.domain;
 
-public class Row {
-    enum Direction {
+class Row {
+    private enum Direction {
         LEFT(-1),
         CENTER(0),
         RIGHT(1);
@@ -12,23 +12,23 @@ public class Row {
             this.number = number;
         }
 
-        public int getNumber() {
+        int getNumber() {
             return number;
         }
     }
 
-    int[] persons;
+    private int[] persons;
 
     Row(int noOfPersons) {
         this.persons = new int[noOfPersons];
     }
 
-    public void drawLine(int startPosition) {
+    void drawLine(int startPosition) {
         persons[startPosition] = Direction.RIGHT.getNumber();
         persons[startPosition + 1] = Direction.LEFT.getNumber();
     }
 
-    public int move(int nthOfPerson) {
+    int move(int nthOfPerson) {
         if (isNoLine(nthOfPerson)) {
             return nthOfPerson;
         }
