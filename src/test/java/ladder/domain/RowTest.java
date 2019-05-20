@@ -37,19 +37,12 @@ public class RowTest {
     }
 
     @Test
-    void 사다리_시작_위치가_음수인_경우() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            row.move(-1);
-        });
-    }
-
-    @Test
     void moveWhenNoLine() {
-        int target = row.move(0);
-        assertEquals(0, target);
+        NaturalNumber target = row.move(new Marker(1));
+        assertEquals(1, target.getNumber());
 
-        target = row.move(2);
-        assertEquals(2, target);
+        target = row.move(new Marker(2));
+        assertEquals(2, target.getNumber());
     }
 
     @Test
@@ -57,8 +50,8 @@ public class RowTest {
         // 0 1 1
         row.drawLine(new NaturalNumber(2));
 
-        int target = row.move(2);
-        assertEquals(1, target);
+        NaturalNumber target = row.move(new Marker(3));
+        assertEquals(2, target.getNumber());
     }
 
     @Test
@@ -66,7 +59,7 @@ public class RowTest {
         // 0 1 1
         row.drawLine(new NaturalNumber(2));
 
-        int target = row.move(1);
-        assertEquals(2, target);
+        NaturalNumber target = row.move(new Marker(2));
+        assertEquals(3, target.getNumber());
     }
 }
