@@ -2,7 +2,7 @@
 사다리타기 미션 저장소
 
 To do list
-- run 메서드 리팩토링
+- Node Direction 접근 리팩토링
 - enum 부분에 대한 리팩토링
 
 ---
@@ -22,3 +22,5 @@ Done
     - 5 => 0 ~ 4 => 최대 위치 3, startPosition >= persons.length - 1 => 예외
     - 현재 위치 값이 -1 => 예외(덮어쓰기 금지)
 - move 메서드 예외 처리 (drawLine메서드와 동일)
+
+- run 메서드 리팩토링
