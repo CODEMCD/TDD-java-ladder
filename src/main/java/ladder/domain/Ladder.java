@@ -1,5 +1,7 @@
 package ladder.domain;
 
+import ladder.core.NaturalNumber;
+
 class Ladder {
     private Row[] rows;
 

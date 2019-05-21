@@ -2,6 +2,10 @@
 사다리타기 미션 저장소
 
 To do list
+- NaturalNumber.toArrayIndex() 위치
+- NaturalNumber.toArrayIndex() 메서드 이름
+- Row.isOverNoOfPersons() 메서드 이름
+
 - Node Direction 접근 리팩토링
 - enum 부분에 대한 리팩토링
 

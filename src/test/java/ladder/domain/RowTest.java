@@ -1,5 +1,6 @@
 package ladder.domain;
 
+import ladder.core.NaturalNumber;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
