@@ -3,6 +3,7 @@ package ladder.domain;
 import ladder.core.NaturalNumber;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -10,9 +11,9 @@ public class LadderTest {
 
     @Test
     void runWhenMultiRows() {
-        // 1 1 0 0
-        // 0 1 1 0
-        // 0 0 1 1
+        // 1 -1 0 0
+        // 0 1 -1 0
+        // 0 0 1 -1
         Ladder ladder = new Ladder(new NaturalNumber(3), new NaturalNumber(4));
         ladder.drawLine(new NaturalNumber(1), new NaturalNumber(1));
         ladder.drawLine(new NaturalNumber(2), new NaturalNumber(2));
@@ -38,5 +39,27 @@ public class LadderTest {
             Ladder ladder = new Ladder(new NaturalNumber(1), new NaturalNumber(3));
             ladder.drawLine(new NaturalNumber(2), new NaturalNumber(2));
         });
+    }
+
+    @Test
+    void 라인이_없는_사다리_생성() {
+        // 한 순간만 유추해보기
+        Row[] rows = new Row[3];
+        for (int i = 0; i < rows.length; i++) {
+            rows[i] = new Row(new NaturalNumber(3));
+        }
+        String result = Ladder.generate(rows, new NaturalNumber(1), new NaturalNumber(1));
+        assertThat("0* 0 0 \n0 0 0 \n0 0 0 \n").isEqualTo(result);
+    }
+
+    @Test
+    void 라인이_있는_사다리_생성() {
+        Row[] rows = new Row[3];
+        for (int i = 0; i < rows.length; i++) {
+            rows[i] = new Row(new NaturalNumber(3));
+        }
+        rows[0].drawLine(new NaturalNumber(1));
+        String result = Ladder.generate(rows, new NaturalNumber(1), new NaturalNumber(1));
+        assertThat("1* -1 0 \n0 0 0 \n0 0 0 \n").isEqualTo(result);
     }
 }
