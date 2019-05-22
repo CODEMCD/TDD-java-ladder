@@ -2,6 +2,11 @@
 사다리타기 미션 저장소
 
 To do list
+- 이중 for문 제거
+- row.getNode() 제거
+- if/else 제거
+- array index 계산 개선
+
 - NaturalNumber.toArrayIndex() 위치
 - NaturalNumber.toArrayIndex() 메서드 이름
 - Row.isOverNoOfPersons() 메서드 이름

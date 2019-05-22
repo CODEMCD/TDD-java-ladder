@@ -46,4 +46,23 @@ public class NodeTest {
         Marker marker = node.move(new Marker(3));
         assertThat(new Marker(3)).isEqualTo(marker);
     }
+
+    @Test
+    void 심볼_가져오기() {
+        StringBuilder sb = new StringBuilder();
+
+        Node node = Node.createCenterNode();
+        node.appendSymbol(sb);
+        assertThat(sb.toString()).isEqualTo("0");
+
+        sb = new StringBuilder();
+        node = Node.createLeftNode();
+        node.appendSymbol(sb);
+        assertThat(sb.toString()).isEqualTo("-1");
+
+        sb = new StringBuilder();
+        node = Node.createRightNode();
+        node.appendSymbol(sb);
+        assertThat(sb.toString()).isEqualTo("1");
+    }
 }
