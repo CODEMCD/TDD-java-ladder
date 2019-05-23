@@ -2,22 +2,12 @@ package ladder.domain;
 
 import ladder.core.NaturalNumber;
 
-class Ladder {
-    private Row[] rows;
+public class LadderRunner {
 
-    Ladder(NaturalNumber height, NaturalNumber noOfPerson) {
-        rows = new Row[height.getNumber()];
-        for (int i = 0; i < height.getNumber(); i++) {
-            rows[i] = new Row(noOfPerson);
-        }
-    }
+    private final Row[] rows;
 
-    void drawLine(NaturalNumber height, NaturalNumber startPosition) {
-        if (height.toArrayIndex() > rows.length - 1) {
-            throw new IllegalArgumentException(String.format("사다리 최대 높이를 넘어섰습니다. 현재 값 : %d", height));
-        }
-
-        rows[height.toArrayIndex()].drawLine(startPosition);
+    public LadderRunner(Row[] rows) {
+        this.rows = rows;
     }
 
     Marker run(Marker nthOfPerson) {
