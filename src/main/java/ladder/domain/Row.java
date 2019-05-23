@@ -18,7 +18,7 @@ class Row {
             throw new IllegalArgumentException(String.format("시작점은 &d 미만이어야 합니다. 현재 값 : %d", nodes.length - 1, startPosition));
         }
 
-        if(nodes[startIndex].isLeftDirection()) {
+        if (nodes[startIndex].isLeftDirection()) {
             throw new IllegalArgumentException("선을 그을 수 없는 위치입니다.");
         }
 
@@ -39,14 +39,15 @@ class Row {
         return this.nodes;
     }
 
-    void generateRow(StringBuilder sb, int currentHeight, NaturalNumber height, NaturalNumber nthOfPerson) {
+    void generateRow(StringBuilder sb, int currentHeight, Position position) {
         for (int j = 0; j < nodes.length; j++) {
             Node node = nodes[j];
             node.appendSymbol(sb);
 
-            if(height.toArrayIndex() == currentHeight && nthOfPerson.toArrayIndex() == j) {
+            if(position.equals(Position.createFromArrayIndex(currentHeight, j))) {
                 sb.append("*");
             }
+
             sb.append(" ");
         }
         sb.append("\n");

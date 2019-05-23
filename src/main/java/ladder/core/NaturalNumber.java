@@ -3,7 +3,9 @@ package ladder.core;
 import java.util.Objects;
 
 public class NaturalNumber {
+    private static final int INTERVAL = 1;
     private int number;
+
     public NaturalNumber(int number) {
         if (number < 1) {
             throw new IllegalArgumentException(String.format("자연수는 1 이상이어야 합니다. 현재 값: %d", number));
@@ -17,7 +19,11 @@ public class NaturalNumber {
     }
 
     public int toArrayIndex() {
-        return this.number - 1;
+        return this.number - INTERVAL;
+    }
+
+    public static NaturalNumber createFromArrayIndex(int index) {
+        return new NaturalNumber(index + INTERVAL);
     }
 
     @Override

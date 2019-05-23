@@ -24,4 +24,10 @@ public class NaturalNumberTest {
         NaturalNumber number = new NaturalNumber(3);
         assertThat(2).isEqualTo(number.toArrayIndex());
     }
+
+    @Test
+    void 배열_인덱스_생성() {
+        NaturalNumber actual = NaturalNumber.createFromArrayIndex(1);
+        assertThat(new NaturalNumber(2)).isEqualTo(actual);
+    }
 }
