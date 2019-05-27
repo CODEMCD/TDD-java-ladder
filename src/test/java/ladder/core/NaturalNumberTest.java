@@ -30,4 +30,11 @@ public class NaturalNumberTest {
         NaturalNumber actual = NaturalNumber.createFromArrayIndex(1);
         assertThat(new NaturalNumber(2)).isEqualTo(actual);
     }
+
+    @Test
+    void 곱셈() {
+        NaturalNumber number = new NaturalNumber(3);
+        NaturalNumber actual = number.multiply(new NaturalNumber(4));
+        assertThat(new NaturalNumber(12)).isEqualTo(actual);
+    }
 }

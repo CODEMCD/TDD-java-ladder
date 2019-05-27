@@ -26,6 +26,10 @@ public class NaturalNumber {
         return new NaturalNumber(index + INTERVAL);
     }
 
+    public NaturalNumber multiply(NaturalNumber operand) {
+        return new NaturalNumber(this.number * operand.number);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
